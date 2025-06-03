@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunday Nwovu - AI Engineer & Innovation Catalyst</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* AI Background Animation */
+        .ai-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
+            animation: aiPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes aiPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #00d4ff;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 100px 0 50px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #00d4ff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ai-brain {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.2), transparent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: rotate 15s linear infinite;
+        }
+
+        .brain-core {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+        }
+
+        .orbit {
+            position: absolute;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            animation: orbit 10s linear infinite;
+        }
+
+        .orbit-1 { width: 200px; height: 200px; }
+        .orbit-2 { width: 250px; height: 250px; animation-direction: reverse; }
+
+        .orbit-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #00d4ff;
+            border-radius: 50%;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px #00d4ff;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #a0a0a0;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: sticky;
+            top: 120px;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        .story-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .story-block {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .story-block h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .story-block p {
+            color: #a0a0a0;
+            line-height: 1.7;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #00d4ff, #8b5cf6);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: #00d4ff;
+            border-radius: 50%;
+            box-shadow: 0 0 20px #00d4ff;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+        }
+
+        .exp-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-company {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .exp-period {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .exp-list {
+            list-style: none;
+        }
+
+        .exp-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #a0a0a0;
+        }
+
+        .exp-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            height: 150px;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .project-description {
+            color: #a0a0a0;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #00d4ff;
+        }
+
+        .skill-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .skill-list li {
+            padding: 0.4rem 0;
+            color: #a0a0a0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-info p {
+            color: #a0a0a0;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+        }
+
+        .contact-details i {
+            color: #00d4ff;
+            width: 20px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #00d4ff;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #8b5cf6);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .ai-brain {
+                width: 250px;
+                height: 250px;
+            }
+
+            .brain-core {
+                width: 120px;
+                height: 120px;
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- AI Background -->
+    <div class="ai-background"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">Sunday Nwovu</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sunday Nwovu</h1>
+            <div class="hero-subtitle">AI Engineer & Innovation Catalyst</div>
+            <p class="hero-description">
+                Transforming tomorrow through intelligent solutions. I architect AI systems that don't just process data—they understand, predict, and revolutionize how we interact with technology.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-robot"></i>
+                    Let's Build Together
+                </a>
+                <a href="#projects" class="btn btn-secondary">
+                    <i class="fas fa-code"></i>
+                    View My Work
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="ai-brain">
+                <div class="orbit orbit-1">
+                    <div class="orbit-dot"></div>
+                </div>
+                <div class="orbit orbit-2">
+                    <div class="orbit-dot"></div>
+                </div>
+                <div class="brain-core">
+                    <i class="fas fa-brain"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">97%</div>
+            <div class="stat-label">AI Model Accuracy</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">AI Projects Delivered</div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">My AI Journey</h2>
+        <div class="about-content">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+                <h3>Sunday Nwovu</h3>
+                <p>Rhodes Forum Finalist</p>
+                <p>Carnegie Mellon University</p>
+                <p>M.S. Engineering AI (2024-2026)</p>
+            </div>
+            <div class="story-section">
+                <div class="story-block">
+                    <h3>🚀 The Visionary</h3>
+                    <p>
+                        As a passionate AI Engineer pursuing my Master's in Engineering Artificial Intelligence at Carnegie Mellon University Africa, I specialize in transforming complex ideas into intelligent, real-world solutions. My expertise spans Applied Machine Learning, Large Language Models, and cutting-edge AI frameworks.
+                    </p>
+                </div>
+                <div class="story-block">
+                    <h3>🏆 The Innovator</h3>
+                    <p>
+                        Recognized as a finalist in the Kevin Xu Innovation Challenge at the Rhodes Forum in Oxford, I demonstrated my ability to innovate at the intersection of AI and real-world applications. I pitched AI NneNna, an AI-driven digital literacy company focused on democratizing technology access.
+                    </p>
+                </div>
+                <div class="story-block">
+                    <h3>💡 The Problem Solver</h3>
+                    <p>
+                        From developing 97% accurate disease prediction systems for agriculture to creating LLM-powered financial analysis chatbots, I excel at rapid prototyping and bringing revolutionary ideas to life. My solutions don't just work—they transform industries.
+                    </p>
+                </div>
+                <div class="story-block">
+                    <h3>🌍 The Impact Creator</h3>
+                    <p>
+                        With over 5 years of experience across data science, machine learning, and AI development, I've consistently delivered solutions that make a difference. Whether mentoring through Kaggle's BIPOC program or building production-ready systems, I believe in AI that serves humanity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Professional Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="experience-card">
+                    <div class="exp-title">Research Fellow (AI Focus)</div>
+                    <div class="exp-company">Equitech Futures, Chicago, Illinois</div>
+                    <div class="exp-period">May 2024 - Jul 2024</div>
+                    <ul class="exp-list">
+                        <li>Developed advanced LLM-powered chatbot for financial document analysis</li>
+                        <li>Mastered Langchain, Flowise, and LlamaIndex for AI agent automation</li>
+                        <li>Pioneered innovative methods for social attention analysis using AI</li>
+                        <li>Conducted comprehensive exploratory data analysis for strategic insights</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="experience-card">
+                    <div class="exp-title">Data Scientist (ML/LLM Specialist)</div>
+                    <div class="exp-company">Zarttech, The Hague, South Holland</div>
+                    <div class="exp-period">Aug 2023 - Jul 2024</div>
+                    <ul class="exp-list">
+                        <li>Led ML and LLM projects across diverse application domains</li>
+                        <li>Architected and deployed ML models via APIs and WebSocket connections</li>
+                        <li>Specialized in large language model integration and optimization</li>
+                        <li>Collaborated with cross-functional teams on data-driven solutions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="experience-card">
+                    <div class="exp-title">Kevin Xu Innovation Challenge Finalist</div>
+                    <div class="exp-company">Rhodes Forum, Oxford, UK</div>
+                    <div class="exp-period">Nov 2024</div>
+                    <ul class="exp-list">
+                        <li>Pitched AI NneNna - revolutionary AI-driven digital literacy platform</li>
+                        <li>Presented to global leaders and innovators at Oxford University</li>
+                        <li>Demonstrated thought leadership in AI accessibility and education</li>
+                        <li>Earned recognition for innovative approach to democratizing AI</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="experience-card">
+                    <div class="exp-title">Data Scientist (Risk & Sentiment Analysis)</div>
+                    <div class="exp-company">Humexid Limited, Lagos, Nigeria</div>
+                    <div class="exp-period">Mar 2021 - Jul 2023</div>
+                    <ul class="exp-list">
+                        <li>Revolutionized financial decision-making with customer loan risk profiling system</li>
+                        <li>Built intelligent sentiment analysis Twitter bot for trustbreed.com</li>
+                        <li>Completely transformed business processes through AI-driven solutions</li>
+                        <li>Delivered production-ready fintech applications with measurable impact</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="experience-card">
+                    <div class="exp-title">AI4D Fellowship Research</div>
+                    <div class="exp-company">University of Port Harcourt, Nigeria</div>
+                    <div class="exp-period">Feb 2023 - May 2023</div>
+                    <ul class="exp-list">
+                        <li>Developed groundbreaking deep learning model for tomato disease prediction</li>
+                        <li>Achieved remarkable 97% accuracy in identifying 10 different disease types</li>
+                        <li>Integrated AI model into mobile application for real-world farmer impact</li>
+                        <li>Collaborated with leading computer science researchers on agricultural AI</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-leaf project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">AI-Powered Agriculture Revolution</h3>
+                    <p class="project-description">
+                        Revolutionary deep learning system using transfer learning to predict tomato diseases from images with 97% accuracy. This breakthrough solution empowers farmers with instant disease detection.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Transfer Learning</span>
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Mobile App</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-robot project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">LLM Financial Intelligence Bot</h3>
+                    <p class="project-description">
+                        Next-generation chatbot powered by advanced LLM frameworks for intelligent financial document analysis. Automates complex financial data processing with unprecedented accuracy.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Langchain</span>
+                        <span class="tech-tag">Flowise</span>
+                        <span class="tech-tag">LlamaIndex</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Financial AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-chart-line project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Smart Risk Profiling System</h3>
+                    <p class="project-description">
+                        Comprehensive risk assessment platform for Crendly.com that completely transformed financial decision-making processes through advanced machine learning algorithms.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Risk Analysis</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Financial ML</span>
+                        <span class="tech-tag">Production API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-graduation-cap project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">AI-Driven Learning Recommendations</h3>
+                    <p class="project-description">
+                        Sophisticated recommendation system using embeddings and knowledge graphs to create personalized learning paths. Aggregates data from multiple sources.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Embeddings</span>
+                        <span class="tech-tag">Knowledge Graphs</span>
+                        <span class="tech-tag">Recommendation AI</span>
+                        <span class="tech-tag">Data Aggregation</span>
+                        <span class="tech-tag">Personalization</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-heart project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Real-time Sentiment Intelligence</h3>
+                    <p class="project-description">
+                        Advanced Twitter bot for trustbreed.com that analyzes sentiment in real-time, providing invaluable insights for brand monitoring and social media strategy.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Sentiment Analysis</span>
+                        <span class="tech-tag">Twitter API</span>
+                        <span class="tech-tag">Real-time NLP</span>
+                        <span class="tech-tag">Social Media AI</span>
+                        <span class="tech-tag">Brand Intelligence</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fas fa-brain project-icon"></i>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">AI NneNna - Digital Literacy Revolution</h3>
+                    <p class="project-description">
+                        Groundbreaking AI-driven digital literacy platform pitched at Rhodes Forum Oxford. Focuses on democratizing AI education and making technology accessible worldwide.
+                    </p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AI Education</span>
+                        <span class="tech-tag">Digital Literacy</span>
+                        <span class="tech-tag">Accessibility</span>
+                        <span class="tech-tag">Social Impact</span>
+                        <span class="tech-tag">Innovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Arsenal</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <i class="fas fa-robot skill-icon"></i>
+                <h3 class="skill-title">AI & Machine Learning</h3>
+                <ul class="skill-list">
+                    <li>Large Language Models (Expert)</li>
+                    <li>Deep Learning & Neural Networks</li>
+                    <li>Computer Vision & Image Processing</li>
+                    <li>Natural Language Processing</li>
+                    <li>Transfer Learning & Fine-tuning</li>
+                    <li>Reinforcement Learning</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <i class="fas fa-tools skill-icon"></i>
+                <h3 class="skill-title">AI Frameworks & Tools</h3>
+                <ul class="skill-list">
+                    <li>Langchain & LlamaIndex</li>
+                    <li>Flowise & AI Agent Automation</li>
+                    <li>TensorFlow & PyTorch</li>
+                    <li>Hugging Face Transformers</li>
+                    <li>OpenAI API & GPT Integration</li>
+                    <li>MLflow & Model Management</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <i class="fas fa-code skill-icon"></i>
+                <h3 class="skill-title">Development & Engineering</h3>
+                <ul class="skill-list">
+                    <li>Python (Expert Level)</li>
+                    <li>Django & FastAPI</li>
+                    <li>RESTful API Development</li>
+                    <li>WebSocket Programming</li>
+                    <li>Git & Version Control</li>
+                    <li>Microservices Architecture</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <i class="fas fa-chart-bar skill-icon"></i>
+                <h3 class="skill-title">Data Science & Analytics</h3>
+                <ul class="skill-list">
+                    <li>Advanced Statistical Analysis</li>
+                    <li>Hypothesis Testing & A/B Testing</li>
+                    <li>Data Visualization & Storytelling</li>
+                    <li>NumPy, Pandas, Matplotlib</li>
+                    <li>Exploratory Data Analysis</li>
+                    <li>Feature Engineering</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <i class="fas fa-cloud skill-icon"></i>
+                <h3 class="skill-title">Cloud & Deployment</h3>
+                <ul class="skill-list">
+                    <li>AWS, Azure, Google Cloud</li>
+                    <li>Model Deployment & Scaling</li>
+                    <li>Docker & Containerization</li>
+                    <li>CI/CD Pipelines</li>
+                    <li>Cloud Architecture Design</li>
+                    <li>Performance Optimization</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <i class="fas fa-users skill-icon"></i>
+                <h3 class="skill-title">Leadership & Innovation</h3>
+                <ul class="skill-list">
+                    <li>Technical Leadership & Mentorship</li>
+                    <li>Innovation Strategy & Pitching</li>
+                    <li>Cross-functional Collaboration</li>
+                    <li>Agile Project Management</li>
+                    <li>Research & Development</li>
+                    <li>Strategic Communication</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Let's Build the Future Together</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Ready to Transform Your Vision?</h3>
+                <p>
+                    Whether you need cutting-edge AI solutions, machine learning expertise, or rapid prototyping to revolutionize your industry, I'm here to make it happen. Let's discuss how we can leverage artificial intelligence to solve your most challenging problems.
+                </p>
+                <ul class="contact-details">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>snwovunwovuhonesty@gmail.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>(+234) 816 872 2372</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Carnegie Mellon University Africa</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>M.S. Engineering AI (2024-2026)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contact-form">
+                <div class="form-header">
+                    <h3>Start Your AI Project</h3>
+                    <p>Let's discuss your vision</p>
+                </div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company/Organization</label>
+                        <input type="text" id="company" name="company" placeholder="Your company or organization...">
+                    </div>
+                    <div class="form-group">
+                        <label for="project">Project Type</label>
+                        <input type="text" id="project" name="project" placeholder="AI development, consulting, research..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Describe your project, goals, and how I can help transform your vision..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 8000);
+            }, 500);
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to target
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Create mailto link
+            const subject = `AI Project Inquiry from ${data.name}`;
+            const body = `
+Name: ${data.name}
+Email: ${data.email}
+Company: ${data.company || 'Not specified'}
+Project Type: ${data.project}
+
+Project Details:
+${data.message}
+
+---
+Sent via Sunday's AI Portfolio
+            `;
+            
+            const mailtoLink = `mailto:snwovunwovuhonesty@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open mail client
+            window.open(mailtoLink);
+            
+            // Show success message
+            const button = document.querySelector('.submit-btn');
+            const originalText = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i> Message Prepared!';
+            button.style.background = 'linear-gradient(135deg, #10b981, #22d3ee)';
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.style.background = 'linear-gradient(135deg, #00d4ff, #8b5cf6)';
+            }, 3000);
+        });
+
+        // Initialize particles
+        createParticles();
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.story-block, .experience-card, .project-card, .skill-category');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        console.log('🤖 Sunday\'s AI Portfolio loaded successfully!');
+    </script>
+</body>
+</html>
